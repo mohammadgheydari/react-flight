@@ -1,0 +1,82 @@
+.suggestionsDropdown {
+  background: #fff;
+  position: absolute;
+  width: 94%;
+  top: 200px;
+  text-align: right;
+  z-index: 99;
+  padding: 0;
+  box-shadow: 0 3px 5px 0 rgba(23, 35, 44, 0.2);
+  max-height: 500px;
+  overflow-y: auto;
+  display: none;
+  opacity: 0;
+}
+.suggestionsDropdown.active {
+  display: block;
+  opacity: 1;
+  top: 70px;
+  animation-name: SlideUp;
+  animation-duration: 150ms;
+}
+.suggestionsDropdown .heading {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.suggestionsDropdown li {
+  list-style-type: none;
+  cursor: pointer;
+  padding: 10px;
+  border-bottom: 1px solid #fafafa;
+  transition: all 150ms ease;
+}
+.suggestionsDropdown li:hover {
+  background-color: #f1f4f7;
+  color: #111;
+}
+.suggestionsDropdown li:before {
+  list-style-type: none;
+}
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container {
+  display: block;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #cfcfcf;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #666;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}
+
+@keyframes SlideUp {
+  0% {
+    opacity: 0;
+    top: 150px;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    top: 70px;
+  }
+  100% {
+    opacity: 1;
+  }
+}

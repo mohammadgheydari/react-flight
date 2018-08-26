@@ -1,0 +1,14 @@
+.flightio-btn {
+  background: #ff7200;
+  background: -moz-linear-gradient(left, #ff7200 0%, #ffa801 100%);
+  background: -webkit-linear-gradient(left, #ff7200 0%, #ffa801 100%);
+  background: linear-gradient(to right, #ff7200 0%, #ffa801 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7200', endColorstr='#ffa801',GradientType=1 );
+  border: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+  border-radius: 3px !important;
+  height: 45px;
+  font-size: 17px;
+  line-height: 33px;
+}

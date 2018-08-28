@@ -1,0 +1,11 @@
+.buttonLoader i {
+  line-height: 0;
+  position: relative;
+  color: rgb(255, 255, 255);
+  top: 8px;
+  margin-right: 5px;
+}
+.buttonLoader img {
+  line-height: 0;
+  margin-right: 5px;
+}

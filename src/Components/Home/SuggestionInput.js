@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import Plane from "@material-ui/icons/AirplanemodeActive";
+import ReactDOM from "react-dom";
+import MaterialIcon from "material-icons-react";
+
 import axios from "axios";
 import "../Shared/Api";
 
@@ -14,8 +16,20 @@ class SuggestionInput extends Component {
       cities: [],
       heading: "شهرهای پربازدید"
     };
-    this.handleSetCity = this.handleSetCity.bind(this);
   }
+  componentWillMount() {
+    document.addEventListener("click", this.handleClickOut, false);
+  }
+  componentWillUnmount() {
+    document.removeEventListener("click", this.handleClickOut, false);
+  }
+  handleClickOut = e => {
+    if (!ReactDOM.findDOMNode(this).contains(e.target)) {
+      this.setState({
+        isActive: false
+      });
+    }
+  };
   componentDidMount() {
     axios.get("CityList/?value={'Name':''}").then(res => {
       let Response = res.data;
@@ -25,7 +39,8 @@ class SuggestionInput extends Component {
       }
     });
   }
-  handleClick = () => {
+  handleClick = e => {
+    e.target.select();
     this.setState({
       isActive: true
     });
@@ -46,21 +61,23 @@ class SuggestionInput extends Component {
     });
   };
 
-  handleSetCity(e) {
-    let cityCode = e.target.getAttribute("citycode"),
-      code = e.target.getAttribute("code"),
-      label = e.target.getAttribute("label"),
-      input = e.target.getAttribute("input");
-
+  handleSetCity = e => {
+    e.stopPropagation();
+    let cityCode = e.currentTarget.getAttribute("citycode"),
+      code = e.currentTarget.getAttribute("code"),
+      label = e.currentTarget.getAttribute("label"),
+      input = e.currentTarget.getAttribute("input");
     document.getElementById(code).value = cityCode;
     document.getElementById(input).value = label;
     this.setState({
-      isActive: !this.state.isActive
+      isActive: false
     });
-  }
+  };
+
   render() {
     let SuggestionClass = "suggestionsDropdown ";
     SuggestionClass += this.state.isActive ? "active" : "";
+
     return (
       <React.Fragment>
         <div className="form-group">
@@ -72,12 +89,12 @@ class SuggestionInput extends Component {
           </label>
           <input
             type="text"
-            className="form-control"
+            className="form-control flightio-input"
             id={this.props.id}
             name={this.props.name}
             placeholder={this.props.placeholder}
             onChange={this.handleChange}
-            onClick={() => this.handleClick(this)}
+            onClick={this.handleClick.bind(this)}
             autoComplete="off"
           />
           <input
@@ -96,9 +113,13 @@ class SuggestionInput extends Component {
                 label={city.CTY_Name}
                 code={this.props.hiddenName}
                 input={this.props.id}
-                onClick={this.handleSetCity}
+                onClick={this.handleSetCity.bind(this)}
               >
-                <Plane />
+                <MaterialIcon
+                  icon="airplanemode_active"
+                  className="suggestionsIcon"
+                  size="small"
+                />
                 <span className="mr-2">{city.CTY_Name}</span>
               </li>
             );

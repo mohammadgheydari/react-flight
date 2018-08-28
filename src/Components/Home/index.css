@@ -15,7 +15,7 @@
 .suggestionsDropdown.active {
   display: block;
   opacity: 1;
-  top: 70px;
+  top: 79px;
   animation-name: SlideUp;
   animation-duration: 150ms;
 }
@@ -39,12 +39,23 @@
 .suggestionsDropdown li:before {
   list-style-type: none;
 }
-
+.suggestionsDropdown .material-icons {
+  position: relative;
+  top: 7px;
+  right: 2px;
+}
 .react-datepicker-wrapper,
 .react-datepicker__input-container {
   display: block;
 }
 
+.flightio-input {
+  border: 1px solid #ddd !important;
+  border-radius: 0 !important;
+  height: calc(2.8rem + 2px) !important;
+  color: #333;
+  position: relative;
+}
 /* width */
 ::-webkit-scrollbar {
   width: 4px;
@@ -74,7 +85,7 @@
     opacity: 1;
   }
   100% {
-    top: 70px;
+    top: 79px;
   }
   100% {
     opacity: 1;

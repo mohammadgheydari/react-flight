@@ -5,13 +5,14 @@ import SuggestionInput from "./SuggestionInput";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import "../Shared/Api";
-
+import ButtonLoader from "../Helper/ButtonLoader/ButtonLoader";
 class Domestic extends Component {
   constructor(props) {
     super(props);
     this.state = {
       startDate: moment(),
-      endDate: moment()
+      endDate: moment(),
+      loading: false
     };
     this.handleChangeStart = this.handleChangeStart.bind(this);
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
@@ -28,8 +29,12 @@ class Domestic extends Component {
     });
   }
   handleSubmit = event => {
+    this.setState({
+      loading: true
+    });
     let sourceCode = document.getElementById("DOM_SourceCityCode").value,
-      destinationCode = document.getElementById("DOM_DestinationCityCode").value,
+      destinationCode = document.getElementById("DOM_DestinationCityCode")
+        .value,
       departDate = document.getElementById("DOM_DepartDate_Str").value,
       arrivalDate = document.getElementById("DOM_ReturnDate_Str").value;
 
@@ -68,17 +73,17 @@ class Domestic extends Component {
       ]
     };
     const data = {
-      "ValueObject": JSON.stringify(searchValues)
+      ValueObject: JSON.stringify(searchValues)
     };
     axios({
-      method: 'post',
-      url: 'SearchFlight',
+      method: "post",
+      url: "SearchFlight",
       data: data
     }).then(function(res) {
-      // console.log(res.data)
-      window.location.assign("/Flight/"+sourceCode+"/"+destinationCode+"/"+res.data)
+      window.location.assign(
+        "/Flight/" + sourceCode + "/" + destinationCode + "/" + res.data
+      );
     });
-
   };
   render() {
     return (
@@ -124,7 +129,7 @@ class Domestic extends Component {
                     </label>
                     <DatePicker
                       autoComplete="off"
-                      className="form-control"
+                      className="form-control flightio-input"
                       id="DOM_DepartDate_Str"
                       placeholderText="انتخاب کنید"
                       minDate={moment()}
@@ -151,7 +156,7 @@ class Domestic extends Component {
                     </label>
                     <DatePicker
                       autoComplete="off"
-                      className="form-control"
+                      className="form-control flightio-input"
                       id="DOM_ReturnDate_Str"
                       placeholderText="انتخاب کنید"
                       minDate={this.state.startDate}
@@ -188,9 +193,17 @@ class Domestic extends Component {
                   </div>
                 </div>
                 <div className="col-xs-12 col-sm-6">
-                  <button className="btn btn-success mt-4" type="submit">
-                    جستجو
-                  </button>
+                  <ButtonLoader
+                    classes="btn btn-flightio mt-4 px-5 py-2"
+                    text="جستجو"
+                    type="submit"
+                    iconSize="small"
+                    iconName="search"
+                    iconColor="#ffffff"
+                    loading={this.state.loading}
+                    LoadingWidth="24px"
+                    LoadingHeight="24px"
+                  />
                 </div>
               </div>
             </div>

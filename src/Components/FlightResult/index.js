@@ -5,13 +5,15 @@ import Time from "react-time-format";
 import NumberFormat from "react-currency-format";
 import "../Shared/Api";
 import "../FlightResult/index.css";
-
+import ReactPlaceholder from "react-placeholder";
+import "react-placeholder/lib/reactPlaceholder.css";
 class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
       flightItems: [],
-      FSL_Id: this.props.match.params.id
+      FSL_Id: this.props.match.params.id,
+      ready: false
     };
   }
   componentDidMount() {
@@ -30,6 +32,7 @@ class Index extends Component {
         console.log(res.data.ResultModel.ItemList[0].Items[0]);
         const items = res.data.ResultModel.ItemList;
         self.setState({ flightItems: items });
+        self.setState({ ready: true });
       })
       .catch(function(error) {
         console.log(error);
@@ -130,7 +133,15 @@ class Index extends Component {
             <div className="col-xs-12 col-sm-4 col-md-3" />
             <div className="col-lg-9 col-md-9 col-sm-12 col-xs-12">
               <p className="text-right">{flightCounts} پرواز موجود است</p>
-              {flights}
+              <ReactPlaceholder
+                type="media"
+                color="#E0E0E0"
+                rows={15}
+                ready={this.state.ready}
+                showLoadingAnimation={true}
+              >
+                {flights}
+              </ReactPlaceholder>
             </div>
           </div>
         </div>

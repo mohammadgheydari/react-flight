@@ -1,0 +1,24 @@
+.input-range__label-container{
+    font-family: IRANSans;
+    direction: rtl
+}
+.input-range__track--active{
+    direction: ltr
+}
+/* .input-range__label-container {
+    right: -50%;
+    left: auto;
+}
+.input-range__label--min {
+    right: 0;
+    left: auto;
+}
+.input-range__label--max {
+    right: auto;
+} */
+/* .input-range__track{
+    transition: right 0.3s ease-out, width 0.3s ease-out !important;
+}
+.input-range__slider-container {
+    transition: right 0.3s ease-out !important;
+} */

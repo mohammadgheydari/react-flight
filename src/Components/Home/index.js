@@ -3,12 +3,15 @@ import Domestic from "./DomesticSearchBox";
 import SweetAlert from "sweetalert2-react";
 import Checkbox from "../Helper/Checkbox/Checkbox";
 import RadioButton from "../Helper/RadioButton/RadioButton";
+import Ripple from 'react-material-ripple'
+
 import "./index.css";
 
 class Home extends Component {
   state = {
     show: false
   };
+ 
   render() {
     return (
       <React.Fragment>
@@ -17,9 +20,15 @@ class Home extends Component {
           <button
             className="btn btn-info"
             onClick={() => this.setState({ show: true })}
-          >
+            >
             پیام
           </button>
+          
+          <br/>   
+            <Ripple className="mt-2" style={{borderRadius: '0.25rem'}}>
+            <button className="btn btn-default py-2 px-4">کلیک کنید</button>  
+            </Ripple>
+
           <SweetAlert
             show={this.state.show}
             title="نمونه اول"
@@ -40,6 +49,10 @@ class Home extends Component {
           />
           <RadioButton inputId="2" text="پرواز خارجی" inputName="group" />
           <RadioButton inputId="3" text="چند مسیره" inputName="group" />
+        
+          {/* <div>
+          <RangeSlider />
+            </div>  */}
         </main>
       </React.Fragment>
     );

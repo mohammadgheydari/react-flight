@@ -1,33 +1,35 @@
 import React, { Component } from "react";
-import DatePicker from "react-datepicker";
-import moment from "moment";
+import moment from 'moment'
 import SuggestionInput from "./SuggestionInput";
-import "react-datepicker/dist/react-datepicker.css";
+import JDatePicker from "./Datepicker"
 import axios from "axios";
 import "../Shared/Api";
 import ButtonLoader from "../Helper/ButtonLoader/ButtonLoader";
+
+
 class Domestic extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      startDate: moment(),
-      endDate: moment(),
-      loading: false
+      // startDate: moment(),
+      // endDate: moment(),
+      loading: false,
+      // value: moment_jalaali().format('jYYYY/jM/jD')
     };
-    this.handleChangeStart = this.handleChangeStart.bind(this);
-    this.handleChangeEnd = this.handleChangeEnd.bind(this);
+    // this.handleChangeStart = this.handleChangeStart.bind(this);
+    // this.handleChangeEnd = this.handleChangeEnd.bind(this);
   }
 
-  handleChangeStart(date) {
-    this.setState({
-      startDate: date
-    });
-  }
-  handleChangeEnd(date) {
-    this.setState({
-      endDate: date
-    });
-  }
+  // handleChangeStart(date) {
+  //   this.setState({
+  //     startDate: date
+  //   });
+  // }
+  // handleChangeEnd(date) {
+  //   this.setState({
+  //     endDate: date
+  //   });
+  // }
   handleSubmit = event => {
     this.setState({
       loading: true
@@ -85,6 +87,7 @@ class Domestic extends Component {
       );
     });
   };
+
   render() {
     return (
       <React.Fragment>
@@ -127,7 +130,7 @@ class Domestic extends Component {
                     >
                       تاریخ رفت
                     </label>
-                    <DatePicker
+                    {/* <DatePicker
                       autoComplete="off"
                       className="form-control flightio-input"
                       id="DOM_DepartDate_Str"
@@ -143,7 +146,13 @@ class Domestic extends Component {
                       startDate={this.state.startDate}
                       endDate={this.state.endDate}
                       onChange={this.handleChangeStart}
-                    />
+                    /> */}
+                    {/* <DatePicker
+                      isGregorian={false}
+                      value={this.state.value}
+                      onChange={value => this.setState({ value })}
+                    /> */}
+                    <JDatePicker />
                   </div>
                 </div>
                 <div className="col-xs-12 col-sm-6">
@@ -154,23 +163,28 @@ class Domestic extends Component {
                     >
                       تاریخ برگشت
                     </label>
-                    <DatePicker
-                      autoComplete="off"
-                      className="form-control flightio-input"
-                      id="DOM_ReturnDate_Str"
-                      placeholderText="انتخاب کنید"
-                      minDate={this.state.startDate}
-                      maxDate={moment().add(365, "days")}
-                      peekNextMonth
-                      showMonthDropdown
-                      showYearDropdown
-                      dropdownMode="select"
-                      selected={this.state.endDate}
-                      selectsEnd
-                      startDate={this.state.startDate}
-                      endDate={this.state.endDate}
-                      onChange={this.handleChangeEnd}
-                    />
+                    {/* <DatePicker
+                      isGregorian={false}
+                      value={this.state.value}
+                      onChange={value => this.setState({ value })}
+                    /> */}
+                    {/* <DatePicker
+                    //   autoComplete="off"
+                    //   className="form-control flightio-input"
+                    //   id="DOM_ReturnDate_Str"
+                    //   placeholderText="انتخاب کنید"
+                    //   minDate={this.state.startDate}
+                    //   maxDate={moment().add(365, "days")}
+                    //   peekNextMonth
+                    //   showMonthDropdown
+                    //   showYearDropdown
+                    //   dropdownMode="select"
+                    //   selected={this.state.endDate}
+                    //   selectsEnd
+                    //   startDate={this.state.startDate}
+                    //   endDate={this.state.endDate}
+                    //   onChange={this.handleChangeEnd}
+                    // /> */}
                   </div>
                 </div>
 

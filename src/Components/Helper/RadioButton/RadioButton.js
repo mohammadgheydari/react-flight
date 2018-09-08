@@ -4,7 +4,7 @@ class ButtonLoader extends Component {
   render() {
     return (
       <div
-        className={this.props.isInline ? "md-radio-inline" : "" + "md-radio"}
+        className={(this.props.isInline ? "md-radio-inline" : "") + " md-radio"}
       >
         <input
           id={this.props.inputId}

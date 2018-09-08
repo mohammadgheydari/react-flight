@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import Domestic from "./DomesticSearchBox";
 import SweetAlert from "sweetalert2-react";
 import Checkbox from "../Helper/Checkbox/Checkbox";
 import RadioButton from "../Helper/RadioButton/RadioButton";
 import Ripple from 'react-material-ripple'
+import FlightioTabs from "../Helper/Tabs/Tabs"
+import 'react-web-tabs/dist/react-web-tabs.css';
 
 import "./index.css";
 
@@ -16,7 +17,10 @@ class Home extends Component {
     return (
       <React.Fragment>
         <main className="container">
-          <Domestic />
+        <h1 className="lead text-center">
+            خرید اینترنتی بلیط هواپیما، قطار و رزرو هتل
+          </h1>
+        <FlightioTabs/>
           <button
             className="btn btn-info"
             onClick={() => this.setState({ show: true })}

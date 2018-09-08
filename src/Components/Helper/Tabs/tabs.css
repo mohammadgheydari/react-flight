@@ -1,0 +1,11 @@
+.rwt__tablist,.rwt__tabs {
+    text-align: right
+}
+.rwt__tab{
+    cursor: pointer;
+}
+.rwt__tab  .material-icons{
+    position: relative;
+    top: 6px;
+    margin-left: 5px;
+}

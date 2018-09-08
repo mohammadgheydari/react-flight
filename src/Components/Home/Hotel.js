@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import SuggestionInput from "./SuggestionInput";
-import JDatePicker from "../Helper/Datepicker/Datepicker";
-import RadioButton from "../Helper/RadioButton/RadioButton";
+import JDatePicker from "../Helper/Datepicker/Datepicker"
 import axios from "axios";
 import "../Shared/Api";
 import ButtonLoader from "../Helper/ButtonLoader/ButtonLoader";
+
 
 class Domestic extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class Domestic extends Component {
     this.state = {
       // startDate: moment(),
       // endDate: moment(),
-      loading: false
+      loading: false,
       // value: moment_jalaali().format('jYYYY/jM/jD')
     };
     // this.handleChangeStart = this.handleChangeStart.bind(this);
@@ -81,10 +81,9 @@ class Domestic extends Component {
       url: "SearchFlight",
       data: data
     }).then(function(res) {
-      this.props.history.push(
+      window.location.assign(
         "/Flight/" + sourceCode + "/" + destinationCode + "/" + res.data
       );
-      // window.location.assign();
     });
   };
 
@@ -92,24 +91,10 @@ class Domestic extends Component {
     return (
       <React.Fragment>
         <form onSubmit={this.handleSubmit}>
+         
           <div className="card shadow-sm p-3 mb-5 bg-white rounded">
             <div className="card-body">
               <div className="row">
-                <div class="col-xs-12 col-sm-12">
-                  <RadioButton
-                    text="رفت و برگشت"
-                    inputId="1"
-                    inputName="group"
-                    checked={true}
-                    isInline={true}
-                  />
-                  <RadioButton
-                    inputId="2"
-                    text="یکطرفه"
-                    inputName="group"
-                    isInline={true}
-                  />
-                </div>
                 <div className="col-xs-12 col-sm-6">
                   <SuggestionInput
                     id="DOM_SourceCityName"

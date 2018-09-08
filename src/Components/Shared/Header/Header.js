@@ -24,6 +24,11 @@ class Header extends Component {
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
+                <a class="nav-link" href="/login">
+                  ورود/ثبت نام
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="/about">
                   درباره ما
                 </a>
@@ -31,6 +36,11 @@ class Header extends Component {
               <li class="nav-item">
                 <a class="nav-link" href="/contact">
                   تماس با ما
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/protected">
+                  صفحه محافظت شده
                 </a>
               </li>
             </ul>

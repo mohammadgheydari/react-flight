@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import "./checkbox.css";
+import PropTypes from "prop-types";
 class ButtonLoader extends Component {
   render() {
-    const classes = "md-checkbox " + this.props.inlineClass + " " +  this.props.color;  
+    const classes =
+      "md-checkbox " + this.props.inlineClass + " " + this.props.color;
     return (
-      <div className={classes} >
+      <div className={classes}>
         <label>
           <input
             type="checkbox"
@@ -19,5 +21,8 @@ class ButtonLoader extends Component {
     );
   }
 }
-
+ButtonLoader.propTypes = {
+  checked: PropTypes.bool,
+  text: PropTypes.oneOf([PropTypes.string, PropTypes.number])
+};
 export default ButtonLoader;
